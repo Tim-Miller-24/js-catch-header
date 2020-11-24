@@ -30,10 +30,7 @@ const myScroll = new Scroll({
     top: 969
 })
 
-
-function rnd(max, min) {
-    return Math.floor(Math.random() * (max - min + 1) - min);
-}
+ 
 
 
 class Catch {
@@ -57,15 +54,18 @@ class Catch {
         })
     }
 
+    rnd(max, min) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+
     catchMe() {
 
-        this.elem.style.marginLeft = rnd((this.parentElem.clientWidth - 231), 10) + 'px';
+        this.elem.style.marginLeft = this.rnd((this.parentElem.clientWidth - this.elem.clientWidth), 0) + 'px';
         
-        this.elem.style.marginTop = rnd((this.parentElem.clientHeight - 54), 10) + 'px';
+        this.elem.style.marginTop = this.rnd((this.parentElem.clientHeight - this.elem.clientHeight), 0) + 'px';
 
     }
 }
-
 
 const CatchHeader = new Catch({
     elem: ".header__content",
@@ -73,7 +73,3 @@ const CatchHeader = new Catch({
 })
 
 
-
-console.dir(CatchHeader.parentElem);
-
-console.dir(CatchHeader.elem);
